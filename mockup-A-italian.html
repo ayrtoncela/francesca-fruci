@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Francesca Fruci · Visual Artist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --paper:    #f5f0e8;
+    --paper-2:  #ede5d7;
+    --ink:      #1a1814;
+    --ink-soft: #57514a;
+    --water:    #3a5a64;
+    --water-2:  #c0d0d4;
+    --rule:     rgba(26,24,20,.18);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper); color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif; font-weight: 300;
+    line-height: 1.7; -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--water); color: var(--paper); }
+
+  /* ── MASTHEAD — italian magazine style, 2 rows centered ── */
+  header.masthead {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(245,240,232,.96); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .masthead-utility {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 40px 0;
+    font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .masthead-utility a, .masthead-utility button {
+    color: var(--ink-soft); text-decoration: none;
+    background: none; border: none; font: inherit; cursor: pointer;
+    letter-spacing: inherit;
+  }
+  .masthead-utility a:hover, .masthead-utility button:hover { color: var(--ink); }
+  .masthead-utility .lang { padding: 4px 10px; border: 1px solid var(--rule); }
+  .masthead-utility .lang:hover { border-color: var(--ink); }
+
+  .masthead-title {
+    text-align: center; padding: 18px 40px 8px;
+  }
+  .masthead-title .brand {
+    font-family: 'Cormorant Garamond', serif; font-weight: 400; font-style: italic;
+    font-size: clamp(36px, 4.8vw, 60px); letter-spacing: .005em;
+    color: var(--ink); text-decoration: none; display: inline-block; line-height: 1;
+  }
+  .masthead-title .brand-sub {
+    margin-top: 6px;
+    font-family: 'Inter', sans-serif; font-size: 10px;
+    letter-spacing: .42em; text-transform: uppercase; color: var(--water);
+  }
+
+  .masthead-sections {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0; padding: 14px 40px 18px;
+    border-top: 1px solid var(--rule);
+    margin: 16px 40px 0;
+  }
+  .masthead-sections a {
+    font-family: 'Cormorant Garamond', serif; font-weight: 400;
+    font-size: 16px; letter-spacing: .02em; color: var(--ink); text-decoration: none;
+    padding: 0 22px; position: relative;
+    transition: color .2s;
+  }
+  .masthead-sections a:not(:last-child)::after {
+    content: '·'; position: absolute; right: -3px; top: 50%; transform: translateY(-50%);
+    color: var(--water); font-size: 16px;
+  }
+  .masthead-sections a.active { font-style: italic; color: var(--water); }
+  .masthead-sections a:hover { color: var(--water); font-style: italic; }
+
+  /* ── HERO — asymmetric italian magazine ── */
+  .hero {
+    padding: 140px 48px 80px;
+    display: grid; grid-template-columns: 5fr 7fr; gap: 56px;
+    align-items: stretch; position: relative;
+  }
+  .hero-portrait {
+    aspect-ratio: 4/5; overflow: hidden;
+    border: 1px solid var(--rule);
+  }
+  .hero-portrait img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(15%) contrast(.96) brightness(1.02);
+  }
+  .hero-text { display: flex; flex-direction: column; justify-content: space-between; padding: 24px 0; }
+  .hero-eyebrow {
+    font-size: 10px; letter-spacing: .35em; text-transform: uppercase;
+    color: var(--water); margin-bottom: 32px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 32px; height: 1px; background: var(--water);
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 400;
+    font-size: clamp(58px, 8.5vw, 124px); line-height: .98; letter-spacing: -.018em;
+    margin-bottom: 24px;
+  }
+  .hero h1 em { font-style: italic; font-weight: 300; color: var(--water); }
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
+    font-size: 22px; line-height: 1.4; color: var(--ink-soft); max-width: 480px;
+    margin-bottom: 40px;
+  }
+  .hero-meta {
+    display: flex; gap: 36px; font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .hero-meta span { display: block; color: var(--ink); margin-top: 4px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; text-transform: none; letter-spacing: 0; }
+
+  /* ── STATEMENT block ── */
+  .statement-wrap {
+    padding: 100px 48px;
+    border-top: 1px solid var(--rule);
+    background: var(--paper-2);
+  }
+  .statement-grid {
+    display: grid; grid-template-columns: 1fr 2fr; gap: 64px;
+    max-width: 1280px; margin: 0 auto;
+  }
+  .section-label {
+    font-size: 10px; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--water); padding-top: 8px;
+    border-top: 1px solid var(--water); width: fit-content;
+  }
+  .statement-body p {
+    font-family: 'Cormorant Garamond', serif; font-weight: 300;
+    font-size: 24px; line-height: 1.55; color: var(--ink);
+    margin-bottom: 24px;
+  }
+  .statement-body p:first-of-type::first-letter {
+    font-size: 64px; line-height: 1; float: left;
+    padding: 6px 12px 0 0; color: var(--water); font-style: italic;
+  }
+  .statement-body em { color: var(--water); font-style: italic; }
+  .statement-pullquote {
+    margin: 56px 0 0 0; padding: 24px 0 24px 32px;
+    border-left: 2px solid var(--water);
+    font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
+    font-size: 18px; line-height: 1.7; color: var(--ink-soft); max-width: 540px;
+  }
+  .statement-pullquote cite {
+    display: block; margin-top: 12px; font-style: normal;
+    font-family: 'Inter', sans-serif; font-size: 10px;
+    letter-spacing: .25em; text-transform: uppercase; color: var(--water);
+  }
+
+  /* ── FEATURED WORKS ── */
+  .works {
+    padding: 100px 48px 120px;
+  }
+  .works-head {
+    display: flex; align-items: end; justify-content: space-between;
+    margin-bottom: 64px;
+  }
+  .works-head h2 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 400;
+    font-size: 48px; letter-spacing: -.01em;
+  }
+  .works-head h2 em { font-style: italic; color: var(--water); }
+  .works-head a {
+    font-size: 11px; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--ink-soft); text-decoration: none; display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid var(--rule); padding-bottom: 4px;
+  }
+  .works-head a:hover { color: var(--water); border-color: var(--water); }
+  /* Asymmetric magazine grid */
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 80px;
+    gap: 20px;
+  }
+  .work {
+    position: relative; overflow: hidden;
+    background: var(--paper-2); border: 1px solid var(--rule);
+    transition: transform .25s ease;
+  }
+  .work:hover { transform: translateY(-2px); }
+  .work img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .work-caption {
+    position: absolute; bottom: 16px; left: 16px; right: 16px;
+    padding: 10px 14px;
+    background: rgba(245,240,232,.92); backdrop-filter: blur(6px);
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 14px; color: var(--ink);
+  }
+  .work-caption small {
+    display: block; font-family: 'Inter', sans-serif; font-style: normal;
+    font-size: 9px; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--ink-soft); margin-top: 2px;
+  }
+  /* Asymmetric placements */
+  .w-1 { grid-column: 1 / span 7; grid-row: span 5; }
+  .w-2 { grid-column: 8 / span 5; grid-row: span 4; }
+  .w-3 { grid-column: 8 / span 5; grid-row: span 3; }
+  .w-4 { grid-column: 1 / span 4; grid-row: span 4; }
+  .w-5 { grid-column: 5 / span 4; grid-row: span 4; }
+  .w-6 { grid-column: 9 / span 4; grid-row: span 4; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--rule); background: var(--paper-2);
+    padding: 60px 48px 40px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px; max-width: 1280px; margin: 0 auto;
+  }
+  .footer-grid h4 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 22px;
+    margin-bottom: 8px;
+  }
+  .footer-grid p { font-size: 13px; color: var(--ink-soft); max-width: 320px; }
+  .footer-col-label {
+    font-size: 10px; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--water); margin-bottom: 14px;
+  }
+  .footer-col a {
+    display: block; color: var(--ink); text-decoration: none; font-size: 13px;
+    margin-bottom: 6px; transition: color .2s;
+  }
+  .footer-col a:hover { color: var(--water); }
+  .footer-bottom {
+    border-top: 1px solid var(--rule); margin-top: 48px; padding-top: 24px;
+    display: flex; justify-content: space-between; font-size: 11px;
+    color: var(--ink-soft); letter-spacing: .08em;
+  }
+
+  @media (max-width: 900px) {
+    .masthead-utility { padding: 10px 18px 0; font-size: 9px; }
+    .masthead-title { padding: 12px 18px 4px; }
+    .masthead-sections { margin: 12px 18px 0; padding: 10px 0 14px; flex-wrap: wrap; gap: 0; }
+    .masthead-sections a { font-size: 14px; padding: 4px 12px; }
+    .masthead-sections a:not(:last-child)::after { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 60px 24px 60px; gap: 32px; }
+    .statement-wrap { padding: 70px 24px; }
+    .statement-grid { grid-template-columns: 1fr; gap: 28px; }
+    .works { padding: 70px 24px; }
+    .works-head { flex-direction: column; align-items: start; gap: 14px; }
+    .works-grid { grid-template-columns: 1fr; grid-auto-rows: 280px; }
+    .w-1, .w-2, .w-3, .w-4, .w-5, .w-6 { grid-column: 1 / -1; grid-row: span 1; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD (italian magazine style) -->
+<header class="masthead">
+  <div class="masthead-utility">
+    <span>Quito · Madrid</span>
+    <a href="https://instagram.com/ffruci_art" target="_blank">@ffruci_art</a>
+    <button class="lang">ES · EN</button>
+  </div>
+  <div class="masthead-title">
+    <a href="#" class="brand">Francesca Fruci</a>
+    <div class="brand-sub">Visual artist · est. 1999</div>
+  </div>
+  <nav class="masthead-sections">
+    <a href="#bio">Bio</a>
+    <a href="#exhibitions">Exhibitions</a>
+    <a href="#works" class="active">Artworks</a>
+    <a href="#jewelry">Glass Jewelry</a>
+    <a href="#publications">Publications</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-portrait">
+    <img src="samples/portrait.jpg" alt="Francesca Fruci">
+  </div>
+  <div class="hero-text">
+    <div>
+      <div class="hero-eyebrow">Visual Artist · 2025</div>
+      <h1>Francesca<br><em>Fruci</em></h1>
+      <p class="hero-sub">
+        Poesía visual a través de instalaciones, fotografía, video, escultura en vidrio y pintura.
+        Una práctica que indaga en los cuatro elementos y en la materia como ensoñación.
+      </p>
+    </div>
+    <div class="hero-meta">
+      <div>Nacida en<span>1999, Italia / Ecuador</span></div>
+      <div>Base<span>Quito · Madrid</span></div>
+      <div>Medio principal<span>Vidrio, instalación</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="statement-wrap" id="bio">
+  <div class="statement-grid">
+    <div class="section-label">Statement</div>
+    <div class="statement-body">
+      <p>
+        Mi trabajo artístico es una exploración matérica y visual de los elementos naturales.
+        Me inspiro en la poética de la contemplación y de los cuatro elementos: <em>agua, fuego, aire y tierra.</em>
+      </p>
+      <p>
+        Trabajo desde la exploración sensorial y poética de diversos materiales,
+        especialmente líquidos y translúcidos, buscando capturar el instante donde la materia
+        revela su propia ensoñación.
+      </p>
+      <blockquote class="statement-pullquote">
+        "La ensoñación es un proceso que surge de la contemplación y conexión profunda con cada elemento
+        de la naturaleza, liberando la mente de las restricciones del tiempo y del espacio."
+        <cite>— Gastón Bachelard</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED WORKS -->
+<section class="works" id="works">
+  <div class="works-head">
+    <h2>Obras <em>destacadas</em></h2>
+    <a href="#">Ver todo el archivo →</a>
+  </div>
+  <div class="works-grid">
+    <div class="work w-1">
+      <img src="samples/eco-de-rio.jpg" alt="Eco de río">
+      <div class="work-caption">Eco de río<small>Fotografía · 2024</small></div>
+    </div>
+    <div class="work w-2">
+      <img src="samples/glass-2.jpg" alt="Aleph">
+      <div class="work-caption">Aleph<small>Vidrio soplado · 2024</small></div>
+    </div>
+    <div class="work w-3">
+      <img src="samples/installation-1.jpg" alt="Ensoñaciones">
+      <div class="work-caption">Ensoñaciones<small>Instalación · 2024</small></div>
+    </div>
+    <div class="work w-4">
+      <img src="samples/glass-1.jpg" alt="Ensueño: Capturar el instante">
+      <div class="work-caption">Ensueño: capturar el instante<small>Vidrio fundido · 2024</small></div>
+    </div>
+    <div class="work w-5">
+      <img src="samples/installation-2.jpg" alt="Instante líquido">
+      <div class="work-caption">Instante líquido<small>Técnica mixta · 2024</small></div>
+    </div>
+    <div class="work w-6">
+      <img src="samples/misc-1.jpg" alt="Cáusticas">
+      <div class="work-caption">Cáusticas<small>Fotografía · 2024</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div>
+      <h4>Francesca Fruci</h4>
+      <p>Artista e investigadora italo-ecuatoriana. Práctica matérica que indaga la poesía de la contemplación y los cuatro elementos.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Navegar</div>
+      <a href="#bio">Bio</a>
+      <a href="#works">Artworks</a>
+      <a href="#jewelry">Glass Jewelry</a>
+      <a href="#exhibitions">Exhibitions</a>
+      <a href="#publications">Publications</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Contacto</div>
+      <a href="mailto:hola@francescafruci.art">hola@francescafruci.art</a>
+      <a href="https://instagram.com/ffruci_art" target="_blank">Instagram</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Currículum</div>
+      <a href="#">Descargar CV (PDF)</a>
+      <a href="#">Catálogo Ensueños 2023</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Francesca Fruci. Todos los derechos reservados.</span>
+    <span>MOCKUP A · italian editorial</span>
+  </div>
+</footer>
+
+</body>
+</html>
