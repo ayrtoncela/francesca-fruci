@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Francesca Fruci · Visual Artist</title>
+<meta name="description" content="Francesca Fruci — artista e investigadora italo-ecuatoriana. Instalaciones, fotografía, video, escultura en vidrio y pintura.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --paper:    #f5f0e8;
+    --paper-2:  #ede5d7;
+    --ink:      #1a1814;
+    --ink-soft: #57514a;
+    --water:    #3a5a64;
+    --water-2:  #c0d0d4;
+    --rule:     rgba(26,24,20,.14);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper); color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif; font-weight: 300;
+    line-height: 1.7; -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--water); color: var(--paper); }
+  a { color: inherit; text-decoration: none; }
+
+  /* ── MASTHEAD — italian magazine 3-row ── */
+  header.masthead {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(245,240,232,.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .masthead-utility {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 48px 0;
+    font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .masthead-utility a, .masthead-utility button {
+    color: var(--ink-soft); text-decoration: none;
+    background: none; border: none; font: inherit; cursor: pointer;
+    letter-spacing: inherit; transition: color .2s;
+  }
+  .masthead-utility a:hover, .masthead-utility button:hover { color: var(--ink); }
+  .masthead-utility .lang { padding: 3px 10px; border: 1px solid var(--rule); }
+  .masthead-utility .lang:hover { border-color: var(--ink); }
+
+  .masthead-title {
+    text-align: center; padding: 16px 48px 6px;
+  }
+  .masthead-title .brand {
+    font-family: 'Cormorant Garamond', serif; font-weight: 400; font-style: italic;
+    font-size: clamp(32px, 4.5vw, 58px); letter-spacing: .005em;
+    color: var(--ink); display: inline-block; line-height: 1;
+  }
+  .masthead-title .brand-sub {
+    margin-top: 5px;
+    font-family: 'Inter', sans-serif; font-size: 9px;
+    letter-spacing: .42em; text-transform: uppercase; color: var(--water);
+  }
+  .masthead-nav {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0; padding: 12px 48px 16px;
+    border-top: 1px solid var(--rule);
+    margin: 10px 48px 0;
+  }
+  .masthead-nav a {
+    font-family: 'Cormorant Garamond', serif; font-weight: 400;
+    font-size: 15px; letter-spacing: .02em; color: var(--ink);
+    padding: 0 20px; position: relative;
+    transition: color .2s;
+  }
+  .masthead-nav a:not(:last-child)::after {
+    content: '·'; position: absolute; right: -2px; top: 50%; transform: translateY(-50%);
+    color: var(--water-2); font-size: 16px;
+  }
+  .masthead-nav a:hover { color: var(--water); font-style: italic; }
+  .masthead-nav a.active { font-style: italic; color: var(--water); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 120px 48px 90px;
+    display: grid; grid-template-columns: 5fr 7fr; gap: 60px;
+    align-items: stretch; min-height: 90vh;
+  }
+  .hero-portrait {
+    aspect-ratio: 4/5; overflow: hidden;
+    border: 1px solid var(--rule);
+  }
+  .hero-portrait img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(12%) contrast(.96) brightness(1.02);
+  }
+  .hero-text { display: flex; flex-direction: column; justify-content: space-between; padding: 24px 0; }
+  .hero-eyebrow {
+    font-size: 10px; letter-spacing: .35em; text-transform: uppercase;
+    color: var(--water); margin-bottom: 28px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--water); }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 400;
+    font-size: clamp(56px, 8vw, 118px); line-height: .95; letter-spacing: -.018em;
+    margin-bottom: 28px;
+  }
+  .hero h1 em { font-style: italic; font-weight: 300; color: var(--water); }
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
+    font-size: 22px; line-height: 1.45; color: var(--ink-soft); max-width: 460px;
+    margin-bottom: 48px;
+  }
+  .hero-meta {
+    display: flex; gap: 40px; font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .hero-meta span {
+    display: block; color: var(--ink); margin-top: 4px;
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 16px; text-transform: none; letter-spacing: 0;
+  }
+  .hero-cta {
+    margin-top: 40px; display: flex; gap: 20px; align-items: center;
+  }
+  .btn-primary {
+    display: inline-block; padding: 12px 28px;
+    border: 1px solid var(--ink); font-size: 10px; letter-spacing: .28em;
+    text-transform: uppercase; color: var(--ink);
+    transition: background .2s, color .2s;
+  }
+  .btn-primary:hover { background: var(--ink); color: var(--paper); }
+  .btn-ghost {
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--water); display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid transparent; padding-bottom: 2px;
+    transition: border-color .2s;
+  }
+  .btn-ghost:hover { border-color: var(--water); }
+
+  /* ── SECTION SHARED ── */
+  .section-wrap { padding: 100px 48px; }
+  .section-wrap.alt { background: var(--paper-2); }
+  .section-wrap.dark { background: var(--ink); color: var(--paper); --water: #9bbbc4; --rule: rgba(255,255,255,.12); }
+  .section-inner { max-width: 1280px; margin: 0 auto; }
+  .section-head {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 60px;
+    border-bottom: 1px solid var(--rule); padding-bottom: 24px;
+  }
+  .section-label {
+    font-size: 10px; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--water);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif; font-weight: 400;
+    font-size: clamp(36px, 4vw, 56px); letter-spacing: -.01em; line-height: 1.1;
+    margin-top: 8px;
+  }
+  .section-title em { font-style: italic; color: var(--water); }
+  .section-link {
+    font-size: 10px; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--ink-soft); display: flex; align-items: center; gap: 8px;
+    transition: color .2s;
+  }
+  .section-link:hover { color: var(--water); }
+
+  /* ── BIO ── */
+  .bio-grid {
+    display: grid; grid-template-columns: 340px 1fr; gap: 80px;
+    align-items: start;
+  }
+  .bio-portrait {
+    position: sticky; top: 140px;
+  }
+  .bio-portrait img {
+    width: 100%; aspect-ratio: 3/4; object-fit: cover;
+    border: 1px solid var(--rule);
+    filter: grayscale(10%);
+  }
+  .bio-portrait-credit {
+    margin-top: 10px; font-size: 10px; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--ink-soft); text-align: center;
+  }
+  .bio-content p {
+    font-family: 'Cormorant Garamond', serif; font-weight: 300;
+    font-size: 22px; line-height: 1.6; color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .bio-content p:first-of-type::first-letter {
+    font-size: 60px; line-height: 1; float: left;
+    padding: 4px 12px 0 0; color: var(--water); font-style: italic;
+  }
+  .bio-content em { color: var(--water); font-style: italic; }
+  .bio-pullquote {
+    margin: 48px 0; padding: 24px 0 24px 32px;
+    border-left: 2px solid var(--water);
+    font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
+    font-size: 20px; line-height: 1.7; color: var(--ink-soft); max-width: 560px;
+  }
+  .bio-pullquote cite {
+    display: block; margin-top: 10px; font-style: normal;
+    font-family: 'Inter', sans-serif; font-size: 10px;
+    letter-spacing: .25em; text-transform: uppercase; color: var(--water);
+  }
+  .bio-awards {
+    margin-top: 56px; border-top: 1px solid var(--rule); padding-top: 40px;
+  }
+  .bio-awards h3 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 28px;
+    margin-bottom: 24px;
+  }
+  .award-item {
+    display: flex; gap: 24px; margin-bottom: 16px;
+    font-size: 14px; line-height: 1.5;
+  }
+  .award-year {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 16px; color: var(--water); min-width: 40px;
+  }
+  .award-desc { color: var(--ink-soft); }
+
+  /* ── ARTWORKS GRID ── */
+  .medium-section { margin-bottom: 80px; }
+  .medium-label {
+    font-size: 10px; letter-spacing: .35em; text-transform: uppercase;
+    color: var(--water); margin-bottom: 28px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .medium-label::before { content: ''; height: 1px; width: 32px; background: var(--water); }
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 80px;
+    gap: 16px;
+  }
+  .work {
+    position: relative; overflow: hidden;
+    background: var(--paper-2); border: 1px solid var(--rule);
+    transition: transform .3s ease;
+    cursor: pointer;
+  }
+  .work:hover { transform: translateY(-3px); }
+  .work img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+  .work:hover img { transform: scale(1.03); }
+  .work-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 16px;
+    background: linear-gradient(transparent, rgba(26,24,20,.72));
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 15px; color: var(--paper); opacity: 0;
+    transition: opacity .3s;
+  }
+  .work:hover .work-caption { opacity: 1; }
+  .work-caption small {
+    display: block; font-family: 'Inter', sans-serif; font-style: normal;
+    font-size: 9px; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--water-2); margin-top: 2px;
+  }
+  /* Grid layouts */
+  .w-a1 { grid-column: 1 / span 7; grid-row: span 5; }
+  .w-a2 { grid-column: 8 / span 5; grid-row: span 4; }
+  .w-a3 { grid-column: 8 / span 5; grid-row: span 3; }
+  .w-b1 { grid-column: 1 / span 4; grid-row: span 4; }
+  .w-b2 { grid-column: 5 / span 4; grid-row: span 4; }
+  .w-b3 { grid-column: 9 / span 4; grid-row: span 4; }
+  .w-c1 { grid-column: 1 / span 5; grid-row: span 4; }
+  .w-c2 { grid-column: 6 / span 7; grid-row: span 4; }
+
+  /* ── EXHIBITIONS ── */
+  .exhibitions-list { border-top: 1px solid var(--rule); }
+  .exhibition-item {
+    display: grid; grid-template-columns: 100px 1fr 220px;
+    gap: 24px; align-items: baseline;
+    padding: 22px 0; border-bottom: 1px solid var(--rule);
+    transition: background .15s;
+  }
+  .exhibition-item:hover { background: rgba(26,24,20,.02); }
+  .exh-year {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 18px; color: var(--water);
+  }
+  .exh-title {
+    font-family: 'Cormorant Garamond', serif; font-weight: 400;
+    font-size: 18px; color: var(--ink); font-style: italic;
+  }
+  .exh-venue { font-size: 13px; color: var(--ink-soft); text-align: right; }
+  .exh-featured {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    margin-bottom: 64px;
+  }
+  .exh-card {
+    position: relative; overflow: hidden;
+    aspect-ratio: 16/10; background: var(--paper-2);
+    border: 1px solid var(--rule);
+  }
+  .exh-card img { width: 100%; height: 100%; object-fit: cover; }
+  .exh-card-info {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 20px 24px;
+    background: linear-gradient(transparent, rgba(26,24,20,.8));
+    color: var(--paper);
+  }
+  .exh-card-info h3 {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 20px; margin-bottom: 4px;
+  }
+  .exh-card-info p { font-size: 12px; color: var(--water-2); letter-spacing: .05em; }
+
+  /* ── PUBLICATIONS ── */
+  .pub-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px;
+    margin-bottom: 72px;
+  }
+  .pub-col h3 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 22px;
+    margin-bottom: 20px; padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .pub-col ul { list-style: none; }
+  .pub-col li {
+    padding: 8px 0; border-bottom: 1px solid var(--rule);
+    font-size: 14px; line-height: 1.5;
+  }
+  .pub-col li a {
+    color: var(--ink-soft); transition: color .2s;
+    display: flex; align-items: baseline; gap: 8px;
+  }
+  .pub-col li a::before { content: '→'; color: var(--water-2); font-size: 11px; flex-shrink: 0; }
+  .pub-col li a:hover { color: var(--water); }
+  .pub-featured {
+    display: flex; gap: 48px; margin-bottom: 64px; align-items: start;
+  }
+  .pub-featured-img {
+    width: 220px; flex-shrink: 0; border: 1px solid var(--rule);
+  }
+  .pub-featured-img img { width: 100%; display: block; }
+  .pub-featured-text h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 26px; font-style: italic;
+    margin-bottom: 12px;
+  }
+  .pub-featured-text p { font-size: 14px; color: var(--ink-soft); line-height: 1.7; }
+  .pub-news { border-top: 1px solid var(--rule); padding-top: 40px; }
+  .pub-news h3 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 22px;
+    margin-bottom: 24px;
+  }
+  .news-item {
+    display: flex; gap: 20px; padding: 14px 0;
+    border-bottom: 1px solid var(--rule); font-size: 13px;
+  }
+  .news-year {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    color: var(--water); font-size: 16px; min-width: 44px;
+  }
+  .news-item a { color: var(--ink-soft); transition: color .2s; }
+  .news-item a:hover { color: var(--water); }
+
+  /* ── JEWELRY ── */
+  .jewelry-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  .jewelry-item {
+    aspect-ratio: 1; overflow: hidden;
+    border: 1px solid var(--rule); position: relative;
+    background: var(--paper-2);
+    transition: transform .3s;
+  }
+  .jewelry-item:hover { transform: translateY(-3px); }
+  .jewelry-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+  .jewelry-item:hover img { transform: scale(1.05); }
+  .jewelry-intro {
+    max-width: 640px; margin-bottom: 48px;
+    font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
+    font-size: 20px; line-height: 1.6; color: var(--ink-soft);
+  }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    align-items: start;
+  }
+  .contact-left h2 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 400;
+    font-size: clamp(40px, 5vw, 72px); line-height: 1; letter-spacing: -.02em;
+    margin-bottom: 32px;
+  }
+  .contact-left h2 em { font-style: italic; color: var(--water); }
+  .contact-left p {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 20px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 40px;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 12px; }
+  .contact-link {
+    display: flex; align-items: center; gap: 14px;
+    font-size: 14px; color: var(--ink);
+    padding: 14px 0; border-bottom: 1px solid var(--rule);
+    transition: color .2s;
+  }
+  .contact-link:hover { color: var(--water); }
+  .contact-link-label {
+    font-size: 9px; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--water); min-width: 80px;
+  }
+  .contact-right { padding-top: 24px; }
+  .contact-portrait {
+    aspect-ratio: 3/4; overflow: hidden; border: 1px solid var(--rule);
+    margin-bottom: 24px;
+  }
+  .contact-portrait img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(20%);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--rule); background: var(--ink); color: var(--paper);
+    padding: 64px 48px 40px;
+  }
+  .footer-inner { max-width: 1280px; margin: 0 auto; }
+  .footer-grid {
+    display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr;
+    gap: 40px; margin-bottom: 48px;
+  }
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 32px; margin-bottom: 12px; color: var(--paper);
+  }
+  .footer-tagline { font-size: 13px; color: rgba(255,255,255,.45); max-width: 300px; line-height: 1.7; }
+  .footer-col-label {
+    font-size: 9px; letter-spacing: .3em; text-transform: uppercase;
+    color: #9bbbc4; margin-bottom: 16px;
+  }
+  .footer-col a {
+    display: block; color: rgba(255,255,255,.6); font-size: 13px;
+    margin-bottom: 8px; transition: color .2s;
+  }
+  .footer-col a:hover { color: var(--paper); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.1); padding-top: 24px;
+    display: flex; justify-content: space-between; font-size: 11px;
+    color: rgba(255,255,255,.35); letter-spacing: .05em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1100px) {
+    .bio-grid { grid-template-columns: 1fr; }
+    .bio-portrait { position: static; max-width: 320px; margin-bottom: 40px; }
+    .pub-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 900px) {
+    .masthead-utility { padding: 10px 20px 0; font-size: 9px; }
+    .masthead-title { padding: 10px 20px 4px; }
+    .masthead-nav { margin: 8px 20px 0; padding: 10px 0 12px; flex-wrap: wrap; gap: 0; }
+    .masthead-nav a { font-size: 13px; padding: 4px 10px; }
+    .masthead-nav a:not(:last-child)::after { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 80px 24px 60px; gap: 36px; min-height: auto; }
+    .section-wrap { padding: 70px 24px; }
+    .section-head { flex-direction: column; align-items: start; gap: 16px; }
+    .works-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 200px; }
+    .w-a1, .w-a2, .w-a3, .w-b1, .w-b2, .w-b3, .w-c1, .w-c2 { grid-column: span 1; grid-row: span 1; }
+    .exhibition-item { grid-template-columns: 80px 1fr; }
+    .exh-venue { display: none; }
+    .exh-featured { grid-template-columns: 1fr; }
+    .pub-grid { grid-template-columns: 1fr; }
+    .pub-featured { flex-direction: column; }
+    .pub-featured-img { width: 180px; }
+    .jewelry-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-right { display: none; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 52px; }
+    .works-grid { grid-template-columns: 1fr; grid-auto-rows: 260px; }
+    .jewelry-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-utility">
+    <span>Quito · Madrid</span>
+    <a href="https://instagram.com/ffruci_art" target="_blank">@ffruci_art</a>
+    <button class="lang" id="langBtn">ES · EN</button>
+  </div>
+  <div class="masthead-title">
+    <a href="#" class="brand">Francesca Fruci</a>
+    <div class="brand-sub">Visual artist · Quito · Madrid</div>
+  </div>
+  <nav class="masthead-nav">
+    <a href="#bio">Bio</a>
+    <a href="#artworks">Artworks</a>
+    <a href="#exhibitions">Exhibitions</a>
+    <a href="#publications">Publications</a>
+    <a href="#jewelry">Glass &amp; Jewelry</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-portrait">
+    <img src="samples/portrait.jpg" alt="Francesca Fruci, artista visual">
+  </div>
+  <div class="hero-text">
+    <div>
+      <div class="hero-eyebrow">Visual Artist · 2025</div>
+      <h1>Francesca<br><em>Fruci</em></h1>
+      <p class="hero-sub">
+        Poesía visual a través de instalaciones, fotografía, video,
+        escultura en vidrio y pintura. Una práctica que indaga en los cuatro
+        elementos y en la materia como ensoñación.
+      </p>
+    </div>
+    <div>
+      <div class="hero-meta">
+        <div>Nacida en<span>1999, Italia / Ecuador</span></div>
+        <div>Base<span>Quito · Madrid</span></div>
+        <div>Especialidad<span>Vidrio, instalación</span></div>
+      </div>
+      <div class="hero-cta">
+        <a href="#artworks" class="btn-primary">Ver obras</a>
+        <a href="#contact" class="btn-ghost">Contacto →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIO -->
+<section class="section-wrap alt" id="bio">
+  <div class="section-inner">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Biografía</div>
+        <h2 class="section-title">Sobre <em>Francesca</em></h2>
+      </div>
+    </div>
+    <div class="bio-grid">
+      <div class="bio-portrait">
+        <img src="samples/portrait.jpg" alt="Francesca Fruci">
+        <p class="bio-portrait-credit">Francesca Fruci · 2025</p>
+      </div>
+      <div class="bio-content">
+        <p>
+          Artista e investigadora italo-ecuatoriana que se graduó en Artes Visuales
+          por la Pontificia Universidad Católica del Ecuador en 2022 y obtuvo el
+          Máster Universitario en Investigación en Arte y Creación en la Universidad
+          Complutense de Madrid en 2024.
+        </p>
+        <p>
+          Su práctica artística se centra en la creación de poesía visual por medio
+          de instalaciones, fotografía, video, escultura en vidrio y pintura. Desde
+          2017 ha participado en exposiciones colectivas y premios de arte emergente.
+        </p>
+        <p>
+          En 2022 recibió el premio Fondo Publícalo de la Pontificia Universidad
+          Católica del Ecuador, lo que le permitió publicar su primer catálogo
+          titulado <em>Ensueños</em> en 2023.
+        </p>
+        <p>
+          Actualmente, forma parte del proyecto de investigación
+          <em>Fem/o/type: Mujeres en el Bioarte Contemporáneo y Prácticas de la Naturaleza</em>,
+          con la curaduría de Pamela Pazmiño.
+        </p>
+        <blockquote class="bio-pullquote">
+          "Mi trabajo artístico es una exploración matérica y visual de los elementos
+          naturales. Empleo principalmente el concepto de <em>ensoñación</em>, del poeta y
+          filósofo Gastón Bachelard, quien explica que es un proceso que surge de la
+          contemplación y conexión profunda con cada elemento de la naturaleza."
+          <cite>— Francesca Fruci, Statement</cite>
+        </blockquote>
+        <div class="bio-awards">
+          <h3>Reconocimientos</h3>
+          <div class="award-item">
+            <div class="award-year">2024</div>
+            <div class="award-desc">Fundación Felipe González — V Premio Rojana 'Alfredo Pérez Rubalcaba' | 2024–2025. Obra ganadora <em>Lágrima de lluvia</em>. Save the Children España, Madrid.</div>
+          </div>
+          <div class="award-item">
+            <div class="award-year">2022</div>
+            <div class="award-desc">Fondo Publícalo PUCE — publicación del catálogo artístico <em>Ensueños</em>.</div>
+          </div>
+          <div class="award-item">
+            <div class="award-year">2022</div>
+            <div class="award-desc">61 Salón de Julio, Guayaquil — obra seleccionada: <em>Agua y sueños</em>.</div>
+          </div>
+          <div class="award-item">
+            <div class="award-year">2022</div>
+            <div class="award-desc">Premio Brasil, Centro de Arte Contemporáneo Quito — arte emergente. Obra seleccionada: <em>Hablar serpientes</em>.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTWORKS -->
+<section class="section-wrap" id="artworks">
+  <div class="section-inner">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Obras</div>
+        <h2 class="section-title">Artworks</h2>
+      </div>
+      <a href="https://instagram.com/ffruci_art" target="_blank" class="section-link">Ver en Instagram →</a>
+    </div>
+
+    <!-- Glass Works -->
+    <div class="medium-section">
+      <div class="medium-label">Glass Works</div>
+      <div class="works-grid">
+        <div class="work w-a1">
+          <img src="samples/eco-de-rio.jpg" alt="Ensueño: Capturar el instante">
+          <div class="work-caption">Ensueño: Capturar el instante<small>Vidrio fundido · 2024</small></div>
+        </div>
+        <div class="work w-a2">
+          <img src="samples/glass-2.jpg" alt="Aleph">
+          <div class="work-caption">Aleph<small>Vidrio soplado · 2024</small></div>
+        </div>
+        <div class="work w-a3">
+          <img src="samples/glass-1.jpg" alt="¿Atrapasol o Atrapado por el sol?">
+          <div class="work-caption">¿Atrapasol o Atrapado por el sol?<small>Vidrio · 2024</small></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Installation -->
+    <div class="medium-section">
+      <div class="medium-label">Instalación</div>
+      <div class="works-grid">
+        <div class="work w-b1">
+          <img src="samples/installation-1.jpg" alt="Ensoñaciones">
+          <div class="work-caption">Ensoñaciones<small>Instalación · 2024</small></div>
+        </div>
+        <div class="work w-b2">
+          <img src="samples/installation-2.jpg" alt="Instante líquido">
+          <div class="work-caption">Instante líquido<small>Técnica mixta · 2024</small></div>
+        </div>
+        <div class="work w-b3">
+          <img src="samples/misc-1.jpg" alt="Cáusticas">
+          <div class="work-caption">Cáusticas<small>Fotografía · 2024</small></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mixed Media / Painting -->
+    <div class="medium-section">
+      <div class="medium-label">Mixed Media &amp; Pintura</div>
+      <div class="works-grid">
+        <div class="work w-c1">
+          <img src="samples/painting-IMG_3239.jpg" alt="Misterio">
+          <div class="work-caption">Misterio<small>Instalación</small></div>
+        </div>
+        <div class="work w-c2">
+          <img src="samples/painting-DSC01189-1.jpg" alt="Hablar serpientes">
+          <div class="work-caption">Hablar serpientes<small>Instalación</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXHIBITIONS -->
+<section class="section-wrap alt" id="exhibitions">
+  <div class="section-inner">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Exposiciones</div>
+        <h2 class="section-title"><em>Exhibitions</em></h2>
+      </div>
+    </div>
+
+    <!-- Featured exhibitions -->
+    <div class="exh-featured">
+      <div class="exh-card">
+        <img src="samples/installation-1.jpg" alt="Fem/o/type — UCLM 2025">
+        <div class="exh-card-info">
+          <h3>Fem/o/type: Mujeres en el Bioarte Contemporáneo</h3>
+          <p>UCLM · Cuenca, España · 2025</p>
+        </div>
+      </div>
+      <div class="exh-card">
+        <img src="samples/misc-1.jpg" alt="La cuestión palpitante — CAC Madrid 2024">
+        <div class="exh-card-info">
+          <h3>La cuestión Palpitante</h3>
+          <p>Centro de Arte Complutense · Madrid, España · 2024</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full exhibition list -->
+    <div class="exhibitions-list">
+      <div class="exhibition-item">
+        <div class="exh-year">2025</div>
+        <div class="exh-title">Obra colaborativa "Sistema sagrado de florecimiento (brote místico de un jardín de cristal)"</div>
+        <div class="exh-venue">Imaginario Tropical – Rocío Soria Díaz</div>
+      </div>
+      <div class="exhibition-item">
+        <div class="exh-year">2025</div>
+        <div class="exh-title">Evolution — Glass Art Society Conference</div>
+        <div class="exh-venue">UTA · Arlington, Texas</div>
+      </div>
+      <div class="exhibition-item">
+        <div class="exh-year">2025</div>
+        <div class="exh-title">Fem/o/type: Mujeres en el Bioarte Contemporáneo y Prácticas de la Naturaleza</div>
+        <div class="exh-venue">Premio Mariano Aguilera · Quito</div>
+      </div>
+      <div class="exhibition-item">
+        <div class="exh-year">2025</div>
+        <div class="exh-title">Fem/o/type: Mujeres en el Bioarte Contemporáneo y Prácticas de la Naturaleza</div>
+        <div class="exh-venue">UCLM · Cuenca, España</div>
+      </div>
+      <div class="exhibition-item">
+        <div class="exh-year">2024</div>
+        <div class="exh-title"><em>La cuestión Palpitante</em></div>
+        <div class="exh-venue">Centro de Arte Complutense · Madrid</div>
+      </div>
+      <div class="exhibition-item">
+        <div class="exh-year">2022</div>
+        <div class="exh-title"><em>Multiverso</em></div>
+        <div class="exh-venue">Galería Q · Quito</div>
+      </div>
+      <div class="exhibition-item">
+        <div class="exh-year">2022</div>
+        <div class="exh-title">61 Salón de Julio — Concurso de pintura</div>
+        <div class="exh-venue">Museo Municipal · Guayaquil</div>
+      </div>
+      <div class="exhibition-item">
+        <div class="exh-year">2022</div>
+        <div class="exh-title">5ta edición Premio Brasil</div>
+        <div class="exh-venue">Centro de Arte Contemporáneo · Quito</div>
+      </div>
+      <div class="exhibition-item">
+        <div class="exh-year">2022</div>
+        <div class="exh-title"><em>Tropezar</em></div>
+        <div class="exh-venue">Centro de Arte Contemporáneo · Quito</div>
+      </div>
+      <div class="exhibition-item">
+        <div class="exh-year">2021</div>
+        <div class="exh-title"><em>Caída y libre</em></div>
+        <div class="exh-venue">Chawpi Laboratorio de creación · Quito</div>
+      </div>
+      <div class="exhibition-item">
+        <div class="exh-year">2020</div>
+        <div class="exh-title"><em>Mujeres creadoras</em></div>
+        <div class="exh-venue">CIAF en Plaza de las Américas · Quito</div>
+      </div>
+      <div class="exhibition-item">
+        <div class="exh-year">2020</div>
+        <div class="exh-title"><em>Des-enlaces</em> — Exposición virtual</div>
+        <div class="exh-venue">Carrera de Artes Visuales PUCE</div>
+      </div>
+      <div class="exhibition-item">
+        <div class="exh-year">2020</div>
+        <div class="exh-title"><em>Casulo</em> — Exposición Internacional Digital</div>
+        <div class="exh-venue">Internacional</div>
+      </div>
+      <div class="exhibition-item">
+        <div class="exh-year">2019</div>
+        <div class="exh-title"><em>Trazo lúdico 3ra Edición</em></div>
+        <div class="exh-venue">Centro de Arte Contemporáneo · Estampería Quiteña</div>
+      </div>
+      <div class="exhibition-item">
+        <div class="exh-year">2019</div>
+        <div class="exh-title"><em>Mira hasta el final</em></div>
+        <div class="exh-venue">Centro Cultural PUCE · Quito</div>
+      </div>
+      <div class="exhibition-item">
+        <div class="exh-year">2019</div>
+        <div class="exh-title"><em>Dimensional</em></div>
+        <div class="exh-venue">Itchimbia · Quito</div>
+      </div>
+      <div class="exhibition-item">
+        <div class="exh-year">2018</div>
+        <div class="exh-title"><em>¿Cómo?</em></div>
+        <div class="exh-venue">PUCE · Quito</div>
+      </div>
+      <div class="exhibition-item">
+        <div class="exh-year">2017</div>
+        <div class="exh-title"><em>Yo artista</em></div>
+        <div class="exh-venue">Centro de Arte Contemporáneo · Quito</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section class="section-wrap" id="publications">
+  <div class="section-inner">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Publicaciones</div>
+        <h2 class="section-title"><em>Publications</em></h2>
+      </div>
+    </div>
+
+    <!-- Featured publication -->
+    <div class="pub-featured">
+      <div class="pub-featured-img">
+        <img src="samples/misc-2.jpg" alt="Index, Revista de Arte Contemporáneo">
+      </div>
+      <div class="pub-featured-text">
+        <h3>Ensueño: Capturar el instante</h3>
+        <p>
+          Fruci, F. (2025). <em>ENSUEÑO: Capturar el instante. Poética de la contemplación.</em>
+          Index, Revista de Arte Contemporáneo, 10(19), 122–133.
+        </p>
+        <br>
+        <a href="https://revistaindex.net/index.php/cav/article/view/637" target="_blank" class="btn-ghost" style="display:inline-flex; margin-top:8px;">Leer artículo →</a>
+      </div>
+    </div>
+
+    <!-- Three-column grid -->
+    <div class="pub-grid">
+      <div class="pub-col">
+        <h3>Libro de Artista</h3>
+        <ul>
+          <li><a href="https://issuu.com/francescafruci2/docs/hablar_serpientes" target="_blank">Hablar Serpientes</a></li>
+          <li><a href="https://issuu.com/francescafruci2/docs/poemario" target="_blank">Poemario Ensueños</a></li>
+          <li><a href="https://issuu.com/francescafruci2/docs/casa_absurda_con_textos_opt" target="_blank">Casa absurda</a></li>
+          <li><a href="https://issuu.com/francescafruci/docs/momento" target="_blank">Momento</a></li>
+          <li><a href="https://issuu.com/francescafruci/docs/conexion_luminica" target="_blank">Conexión lumínica</a></li>
+        </ul>
+      </div>
+      <div class="pub-col">
+        <h3>Video Arte</h3>
+        <ul>
+          <li><a href="https://www.youtube.com/watch?v=0-AJAm16Hd8" target="_blank">Materia contra materia</a></li>
+          <li><a href="https://www.youtube.com/watch?v=-fRB1CN1SuI" target="_blank">Reflejo</a></li>
+          <li><a href="https://www.youtube.com/watch?v=YaYLX3M6i6A" target="_blank">Espectro electromagnético</a></li>
+          <li><a href="https://www.youtube.com/watch?v=l1yPE9bDj3s" target="_blank">Mensajes ocultos del agua</a></li>
+          <li><a href="https://vimeo.com/800181845" target="_blank">Pensar burbujas</a></li>
+          <li><a href="https://vimeo.com/user217847388" target="_blank">Ensueño: capturar el instante</a></li>
+        </ul>
+      </div>
+      <div class="pub-col">
+        <h3>Catálogos</h3>
+        <ul>
+          <li><a href="https://www.academia.edu/84232132/ENSUENOS_Francesca_Fruci" target="_blank">Catálogo Ensueños 2023</a></li>
+          <li><a href="https://independent.academia.edu/FrancescaFruci" target="_blank">Academia.edu — artículos e investigaciones</a></li>
+          <li><a href="https://www.academia.edu/108502511" target="_blank">Bitácora de procesos y materiales en pintura</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- News & Press -->
+    <div class="pub-news">
+      <h3>Noticias y prensa</h3>
+      <div class="news-item">
+        <div class="news-year">2025</div>
+        <div>Fem/o/type: Mujeres en el bioarte contemporáneo y las prácticas con la naturaleza. Publicación del proyecto de investigación para el Premio Mariano Aguilera, curadora Pamela Pazmiño.</div>
+      </div>
+      <div class="news-item">
+        <div class="news-year">2024</div>
+        <div>Asociación de Coleccionistas de Arte (ACCA). <a href="https://coleccionismodearte.es/premio-de-bellas-artes/" target="_blank">Premio de Bellas Artes</a>. Coleccionismo de Arte Madrid.</div>
+      </div>
+      <div class="news-item">
+        <div class="news-year">2023</div>
+        <div>Index No.14 — <a href="http://www.revistaindex.net/index.php/cav/article/view/508" target="_blank">61 Salón de Julio</a> por Giada Lusardi.</div>
+      </div>
+      <div class="news-item">
+        <div class="news-year">2022</div>
+        <div>Mundo Diners — <a href="https://revistamundodiners.com/mundodiners-plus/multiverso-artistas/" target="_blank">Un 'multiverso' de artistas ecuatorianos contemporáneos</a> por Víctor Vergara.</div>
+      </div>
+      <div class="news-item">
+        <div class="news-year">2022</div>
+        <div>MNCHROME — <a href="https://mnchrome.com/hablar-serpientes-de-francesca-frucci/" target="_blank">Hablar Serpientes</a>.</div>
+      </div>
+      <div class="news-item">
+        <div class="news-year">2021</div>
+        <div>Obra de Pilar Flores — <a href="http://pilarflores.org/?p=558" target="_blank">Bitácora de color</a> y <a href="https://pilarflores.org/el-color-como-pensamiento" target="_blank">El color como pensamiento</a>.</div>
+      </div>
+      <div class="news-item">
+        <div class="news-year">2020</div>
+        <div>Habitación del Tiempo — <a href="http://www.laselecta.org/2020/12/taller-5-taller-estrategias-contemporaneas/" target="_blank">Pensándo(nos)</a>. Revista de arte contemporáneo "La Selecta".</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLASS JEWELRY -->
+<section class="section-wrap alt" id="jewelry">
+  <div class="section-inner">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Joyería</div>
+        <h2 class="section-title">Glass <em>Jewelry</em></h2>
+      </div>
+      <a href="https://instagram.com/ffruci_art" target="_blank" class="section-link">Ver en Instagram →</a>
+    </div>
+    <p class="jewelry-intro">
+      Esculturas en vidrio concebidas como objetos portables —
+      piezas únicas que llevan la poética del vidrio soplado y flamework
+      al cuerpo como territorio de contemplación.
+    </p>
+    <div class="jewelry-grid">
+      <div class="jewelry-item">
+        <img src="samples/jewelry-IMG20240304184804-1-1024x1024.jpg" alt="Joyería en vidrio — pieza 1">
+      </div>
+      <div class="jewelry-item">
+        <img src="samples/jewelry-DSC00417-copia-1024x1024.jpg" alt="Joyería en vidrio — pieza 2">
+      </div>
+      <div class="jewelry-item">
+        <img src="samples/glass-3.jpg" alt="Joyería en vidrio — pieza 3">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section-wrap" id="contact">
+  <div class="section-inner">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Contacto</div>
+        <h2 class="section-title">Contact</h2>
+      </div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-left">
+        <h2>Hablemos<br><em>sobre arte.</em></h2>
+        <p>
+          Para consultas sobre obras, exposiciones, colaboraciones
+          o adquisición de piezas, escribe directamente.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:francescaphoto21@gmail.com" class="contact-link">
+            <span class="contact-link-label">Email</span>
+            francescaphoto21@gmail.com
+          </a>
+          <a href="https://instagram.com/ffruci_art" target="_blank" class="contact-link">
+            <span class="contact-link-label">Instagram</span>
+            @ffruci_art
+          </a>
+          <a href="https://linktr.ee/FrancescaFruci" target="_blank" class="contact-link">
+            <span class="contact-link-label">Linktree</span>
+            linktr.ee/FrancescaFruci
+          </a>
+          <a href="https://www.linkedin.com/in/francesca-fruci-692280250/" target="_blank" class="contact-link">
+            <span class="contact-link-label">LinkedIn</span>
+            Francesca Fruci
+          </a>
+          <a href="http://francescafruci.art/wp-content/uploads/2025/01/Francesca-Fruci_portafolio-2025_compressed.pdf" target="_blank" class="contact-link">
+            <span class="contact-link-label">CV / Portfolio</span>
+            Descargar PDF 2025
+          </a>
+        </div>
+      </div>
+      <div class="contact-right">
+        <div class="contact-portrait">
+          <img src="samples/portrait.jpg" alt="Francesca Fruci">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COTIZACIÓN -->
+<section class="section-wrap" id="cotizacion" style="background:#1a1814; color:#f5f0e8; --rule:rgba(255,255,255,.1); --water:#9bbbc4;">
+  <div class="section-inner" style="max-width:900px;">
+    <div style="text-align:center; margin-bottom:64px;">
+      <div class="section-label" style="color:#9bbbc4;">Propuesta de trabajo</div>
+      <h2 class="section-title" style="color:#f5f0e8;">Cotización</h2>
+      <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:18px; color:rgba(245,240,232,.55); margin-top:12px; max-width:480px; margin-left:auto; margin-right:auto; line-height:1.6;">
+        Sitio estático profesional — rápido, seguro y sin costos de hosting mensuales.
+      </p>
+    </div>
+
+    <div style="border:1px solid rgba(255,255,255,.1); margin-bottom:48px;">
+      <div style="display:grid; grid-template-columns:1fr auto; gap:24px; padding:22px 32px; border-bottom:1px solid rgba(255,255,255,.07); align-items:start;">
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:18px; margin-bottom:6px;">Diseño y desarrollo del sitio</div>
+          <div style="font-size:12px; color:rgba(245,240,232,.4); line-height:1.7;">Sitio completo — 6 secciones (Bio, Artworks, Exhibitions, Publications, Glass Jewelry, Contact). Diseño elegido de esta propuesta, versión móvil y revisiones hasta aprobación.</div>
+        </div>
+        <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; white-space:nowrap; color:#f5f0e8;">$300 USD</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr auto; gap:24px; padding:22px 32px; border-bottom:1px solid rgba(255,255,255,.07); align-items:start;">
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:18px; margin-bottom:6px;">Hosting + SSL + CDN global</div>
+          <div style="font-size:12px; color:rgba(245,240,232,.4); line-height:1.7;">Vercel (gratuito para sitios estáticos). SSL automático incluido — tu sitio actual no tiene SSL, lo que afecta SEO y seguridad. CDN en 100+ regiones del mundo.</div>
+        </div>
+        <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; white-space:nowrap; color:#9bbbc4;">$0 / año</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr auto; gap:24px; padding:22px 32px; border-bottom:1px solid rgba(255,255,255,.07); align-items:start;">
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:18px; margin-bottom:6px;">Migración de dominio + configuración DNS</div>
+          <div style="font-size:12px; color:rgba(245,240,232,.4); line-height:1.7;">Apuntar francescafruci.art al nuevo sitio. Si ya administras tu dominio (Cloudflare u otro), el proceso toma menos de 24 horas. Incluido en la construcción.</div>
+        </div>
+        <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; white-space:nowrap; color:#9bbbc4;">$0</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr auto; gap:24px; padding:22px 32px; border-bottom:1px solid rgba(255,255,255,.07); align-items:start;">
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:18px; margin-bottom:6px;">Renovación de dominio (.art / .com)</div>
+          <div style="font-size:12px; color:rgba(245,240,232,.4); line-height:1.7;">Si ya tienes francescafruci.art activo, sin costo adicional. Si necesitas registrar o renovar, el costo es del proveedor de dominio (~$15–25 USD/año). No incluido.</div>
+        </div>
+        <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; white-space:nowrap; color:rgba(245,240,232,.35);">~$20 / año</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr auto; gap:24px; padding:22px 32px; align-items:start;">
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:18px; margin-bottom:6px;">Actualizaciones de contenido futuras</div>
+          <div style="font-size:12px; color:rgba(245,240,232,.4); line-height:1.7;">Opcional. Agregar exposiciones, obras o texto nuevo. Se acuerda por tarea o paquete de horas.</div>
+        </div>
+        <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; white-space:nowrap; color:rgba(245,240,232,.35);">A convenir</div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:56px;">
+      <div style="padding:32px; border:1px solid rgba(192,208,212,.25);">
+        <div style="font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:#9bbbc4; margin-bottom:14px;">Inversión total</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:52px; line-height:1; color:#f5f0e8; margin-bottom:10px;">$300 <span style="font-size:22px;">USD</span></div>
+        <div style="font-size:12px; color:rgba(245,240,232,.4); line-height:1.7;">Pago único. Sin mensualidades de hosting.<br>Costo anual posterior: solo el dominio (~$20/año).</div>
+      </div>
+      <div style="padding:32px; border:1px solid rgba(255,255,255,.05); background:rgba(255,255,255,.02);">
+        <div style="font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:rgba(245,240,232,.25); margin-bottom:14px;">Costo WordPress actual (est.)</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:52px; line-height:1; color:rgba(245,240,232,.25); margin-bottom:10px;">$120+ <span style="font-size:22px;">USD</span></div>
+        <div style="font-size:12px; color:rgba(245,240,232,.25); line-height:1.7;">Hosting/año sin SSL, carga lenta,<br>sin control total sobre el diseño.</div>
+      </div>
+    </div>
+
+    <div style="text-align:center;">
+      <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:20px; color:rgba(245,240,232,.55); margin-bottom:32px; line-height:1.6;">
+        ¿Tienes preguntas o quieres ajustar algo? Hablemos.
+      </p>
+      <a href="mailto:ayrton@ayrtoncela.cloud" style="display:inline-block; padding:14px 36px; border:1px solid rgba(245,240,232,.35); font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:#f5f0e8; text-decoration:none; font-family:'Inter',sans-serif;">
+        Escribir a Ayrton →
+      </a>
+      <div style="margin-top:16px; font-size:11px; color:rgba(245,240,232,.25); letter-spacing:.08em;">ayrton@ayrtoncela.cloud</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Francesca Fruci</div>
+        <p class="footer-tagline">
+          Artista e investigadora italo-ecuatoriana. Práctica matérica que
+          indaga la poesía de la contemplación y los cuatro elementos.
+          Quito · Madrid · 2025
+        </p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Navegar</div>
+        <a href="#bio">Bio</a>
+        <a href="#artworks">Artworks</a>
+        <a href="#exhibitions">Exhibitions</a>
+        <a href="#publications">Publications</a>
+        <a href="#jewelry">Glass &amp; Jewelry</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Contacto</div>
+        <a href="mailto:francescaphoto21@gmail.com">Email</a>
+        <a href="https://instagram.com/ffruci_art" target="_blank">Instagram @ffruci_art</a>
+        <a href="https://linktr.ee/FrancescaFruci" target="_blank">Linktree</a>
+        <a href="https://www.linkedin.com/in/francesca-fruci-692280250/" target="_blank">LinkedIn</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Documentos</div>
+        <a href="http://francescafruci.art/wp-content/uploads/2025/01/Francesca-Fruci_portafolio-2025_compressed.pdf" target="_blank">Portfolio 2025 (PDF)</a>
+        <a href="https://www.academia.edu/84232132/ENSUENOS_Francesca_Fruci" target="_blank">Catálogo Ensueños</a>
+        <a href="https://independent.academia.edu/FrancescaFruci" target="_blank">Academia.edu</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Francesca Fruci. Todos los derechos reservados.</span>
+      <span>francescafruci.art</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* Active nav on scroll */
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.masthead-nav a');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const link = document.querySelector(`.masthead-nav a[href="#${e.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => obs.observe(s));
+</script>
+
+</body>
+</html>
