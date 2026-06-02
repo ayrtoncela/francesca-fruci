@@ -433,6 +433,63 @@
     font-size: 11px; color: var(--ink-soft); letter-spacing: .08em;
   }
 
+  /* ── TIENDA ── */
+  .tienda-intro-b { font-family:'Spectral',serif; font-style:italic; font-weight:300; font-size:18px; line-height:1.65; color:var(--ink-soft); max-width:580px; margin-bottom:44px; }
+  .tienda-grid-b { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .producto-b { display:flex; flex-direction:column; border:1px solid var(--rule); }
+  .producto-b-img { aspect-ratio:1; overflow:hidden; background:var(--bg-soft); }
+  .producto-b-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s; }
+  .producto-b:hover .producto-b-img img { transform:scale(1.04); }
+  .producto-b-info { padding:18px; flex:1; display:flex; flex-direction:column; gap:5px; }
+  .producto-b-num { font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-soft); }
+  .producto-b-nombre { font-family:'Spectral',serif; font-style:italic; font-size:18px; color:var(--ink); }
+  .producto-b-medio { font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); }
+  .producto-b-precio { font-family:'Spectral',serif; font-style:italic; font-size:20px; color:var(--accent); margin-top:4px; }
+  .btn-comprar-b {
+    margin-top:auto; padding:10px 0; border:1px solid var(--ink);
+    font-size:9px; letter-spacing:.28em; text-transform:uppercase;
+    background:none; cursor:pointer; font-family:'Manrope',sans-serif;
+    color:var(--ink); transition:background .2s, color .2s; width:100%;
+  }
+  .btn-comprar-b:hover { background:var(--ink); color:var(--bg); }
+  /* Checkout overlay B */
+  .co-overlay {
+    position:fixed; inset:0; z-index:200;
+    background:rgba(22,22,20,.88); backdrop-filter:blur(10px);
+    display:none; align-items:center; justify-content:center; padding:24px;
+  }
+  .co-overlay.open { display:flex; }
+  .co-box {
+    background:var(--bg); border:1px solid var(--rule);
+    width:100%; max-width:420px; padding:36px 32px; position:relative;
+    max-height:90vh; overflow-y:auto;
+  }
+  .co-close {
+    position:absolute; top:14px; right:18px; background:none; border:none;
+    font-size:22px; cursor:pointer; color:var(--ink-soft); line-height:1;
+  }
+  .co-product { display:flex; gap:16px; margin-bottom:24px; padding-bottom:24px; border-bottom:1px solid var(--rule); }
+  .co-product-img { width:72px; height:72px; object-fit:cover; border:1px solid var(--rule); flex-shrink:0; }
+  .co-product-name { font-family:'Spectral',serif; font-style:italic; font-size:18px; }
+  .co-product-price { font-family:'Spectral',serif; font-style:italic; font-size:20px; color:var(--accent); }
+  .co-form { display:flex; flex-direction:column; gap:12px; margin-bottom:20px; }
+  .co-field { display:flex; flex-direction:column; gap:4px; }
+  .co-field label { font-size:9px; letter-spacing:.25em; text-transform:uppercase; color:var(--ink-soft); }
+  .co-field input, .co-field select {
+    padding:9px 12px; border:1px solid var(--rule); background:var(--bg);
+    font-family:'Manrope',sans-serif; font-size:13px; color:var(--ink);
+    outline:none; transition:border-color .2s;
+  }
+  .co-field input:focus, .co-field select:focus { border-color:var(--ink); }
+  .co-form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .co-pay-btns { display:flex; flex-direction:column; gap:10px; }
+  .co-btn-stripe { padding:13px; border:none; cursor:pointer; background:#635bff; color:#fff; font-size:13px; font-weight:500; transition:opacity .2s; font-family:'Manrope',sans-serif; }
+  .co-btn-stripe:hover { opacity:.9; }
+  .co-btn-paypal { padding:13px; border:1px solid var(--rule); cursor:pointer; background:#ffc439; color:#003087; font-size:13px; font-weight:500; transition:opacity .2s; font-family:'Manrope',sans-serif; }
+  .co-btn-paypal:hover { opacity:.9; }
+  .co-secure { text-align:center; font-size:10px; color:var(--ink-soft); margin-top:12px; letter-spacing:.08em; }
+  .co-demo { margin-top:14px; padding:10px 14px; background:rgba(44,74,82,.08); font-size:11px; color:var(--accent); line-height:1.6; text-align:center; }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 1000px) {
     body { padding-left: 0; padding-top: 60px; }
@@ -486,6 +543,7 @@
       <li><a href="#exhibitions">Exhibitions</a></li>
       <li><a href="#publications">Publications</a></li>
       <li><a href="#jewelry">Glass &amp; Jewelry</a></li>
+      <li><a href="#tienda">Tienda</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -762,6 +820,100 @@
   </div>
 </section>
 
+<!-- TIENDA -->
+<section class="section" id="tienda">
+  <div class="section-inner">
+    <span class="section-label">Tienda</span>
+    <h2 class="section-title"><em>Shop</em></h2>
+    <p class="tienda-intro-b">
+      Obras originales, ediciones de fotografía y joyería de vidrio disponibles para adquirir.
+      Pago seguro con Stripe o PayPal — envío a todo el mundo.
+    </p>
+    <div class="tienda-grid-b">
+      <div class="producto-b">
+        <div class="producto-b-img"><img src="samples/glass-2.jpg" alt="Aleph"></div>
+        <div class="producto-b-info">
+          <span class="producto-b-num">01</span>
+          <span class="producto-b-nombre">Aleph</span>
+          <span class="producto-b-medio">Vidrio soplado · Obra original · 2024</span>
+          <span class="producto-b-precio">$280 USD</span>
+          <button class="btn-comprar-b" onclick="abrirCo('Aleph','Vidrio soplado · 2024','$280 USD','samples/glass-2.jpg')">Comprar →</button>
+        </div>
+      </div>
+      <div class="producto-b">
+        <div class="producto-b-img"><img src="samples/eco-de-rio.jpg" alt="Ensueño: Capturar el instante"></div>
+        <div class="producto-b-info">
+          <span class="producto-b-num">02</span>
+          <span class="producto-b-nombre">Ensueño: Capturar el instante</span>
+          <span class="producto-b-medio">Fotografía · Edición limitada 1/10 · 2024</span>
+          <span class="producto-b-precio">$85 USD</span>
+          <button class="btn-comprar-b" onclick="abrirCo('Ensueño: Capturar el instante','Fotografía · Edición 1/10 · 2024','$85 USD','samples/eco-de-rio.jpg')">Comprar →</button>
+        </div>
+      </div>
+      <div class="producto-b">
+        <div class="producto-b-img"><img src="samples/jewelry-IMG20240304184804-1-1024x1024.jpg" alt="Joyería de vidrio"></div>
+        <div class="producto-b-info">
+          <span class="producto-b-num">03</span>
+          <span class="producto-b-nombre">Joyería de vidrio</span>
+          <span class="producto-b-medio">Flamework · Pieza única · 2024</span>
+          <span class="producto-b-precio">$120 USD</span>
+          <button class="btn-comprar-b" onclick="abrirCo('Joyería de vidrio','Flamework · Pieza única · 2024','$120 USD','samples/jewelry-IMG20240304184804-1-1024x1024.jpg')">Comprar →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKOUT MODAL B -->
+<div class="co-overlay" id="coOverlay">
+  <div class="co-box">
+    <button class="co-close" onclick="cerrarCo()">×</button>
+    <div class="co-product">
+      <img class="co-product-img" id="coImg" src="" alt="">
+      <div>
+        <div class="co-product-name" id="coNombre"></div>
+        <div style="font-size:12px;color:var(--ink-soft);margin:4px 0 8px;" id="coMedio"></div>
+        <div class="co-product-price" id="coPrecio"></div>
+      </div>
+    </div>
+    <form class="co-form" onsubmit="return false;">
+      <div class="co-field">
+        <label>Nombre completo</label>
+        <input type="text" placeholder="Francesca Fruci">
+      </div>
+      <div class="co-field">
+        <label>Email</label>
+        <input type="email" placeholder="hola@francescafruci.art">
+      </div>
+      <div class="co-form-row">
+        <div class="co-field">
+          <label>País</label>
+          <select>
+            <option>Ecuador</option><option>España</option><option>México</option>
+            <option>Argentina</option><option>Colombia</option><option>Estados Unidos</option><option>Otro</option>
+          </select>
+        </div>
+        <div class="co-field">
+          <label>Ciudad</label>
+          <input type="text" placeholder="Quito">
+        </div>
+      </div>
+      <div class="co-field">
+        <label>Dirección de envío</label>
+        <input type="text" placeholder="Calle, número, referencia">
+      </div>
+    </form>
+    <div class="co-pay-btns">
+      <button class="co-btn-stripe" onclick="mostrarCoDemo()">🔐 Pagar con Stripe</button>
+      <button class="co-btn-paypal" onclick="mostrarCoDemo()">PayPal</button>
+    </div>
+    <div class="co-secure">🔒 Pago seguro · SSL · Envío internacional</div>
+    <div class="co-demo" id="coDemo" style="display:none;">
+      Esta es una demostración visual. El pago real se habilitaría una vez contratado el servicio.
+    </div>
+  </div>
+</div>
+
 <!-- CONTACT -->
 <section class="section" id="contact">
   <div class="section-inner">
@@ -805,67 +957,126 @@
   <div class="cotizacion-inner">
     <span class="cot-label">Propuesta de trabajo</span>
     <h2 class="cot-title">Cotización</h2>
-    <p class="cot-sub">Sitio estático profesional — rápido, seguro y sin costos de hosting mensuales.</p>
+    <p class="cot-sub">Sitio con tienda online — rápido, seguro y sin costos de hosting mensuales.</p>
 
     <div class="cot-table">
       <div class="cot-row">
         <div>
           <div class="cot-row-name">Diseño y desarrollo del sitio</div>
-          <div class="cot-row-desc">Sitio completo — 6 secciones (Bio, Artworks, Exhibitions, Publications, Glass Jewelry, Contact). Diseño elegido de esta propuesta, versión móvil y revisiones hasta aprobación.</div>
+          <div class="cot-row-desc">7 secciones: Bio, Artworks, Exhibitions, Publications, Glass Jewelry, <strong style="color:rgba(250,250,248,.7);">Tienda online</strong>, Contact. Diseño elegido, versión móvil, revisiones hasta aprobación.</div>
         </div>
-        <div class="cot-row-price">$300 USD</div>
+        <div class="cot-row-price">$350 USD</div>
+      </div>
+      <div class="cot-row">
+        <div>
+          <div class="cot-row-name">Tienda online con pago seguro <span style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#9bbbc4;margin-left:4px;">incluida</span></div>
+          <div class="cot-row-desc">Checkout con formulario de envío, pago via Stripe y/o PayPal. Las transacciones van directo a tu cuenta — sin intermediarios ni comisiones de plataforma.</div>
+        </div>
+        <div class="cot-row-price accent">incluida</div>
       </div>
       <div class="cot-row">
         <div>
           <div class="cot-row-name">Hosting + SSL + CDN global</div>
-          <div class="cot-row-desc">Vercel (gratuito para sitios estáticos). SSL automático incluido — tu sitio actual no tiene SSL, lo que afecta SEO y seguridad. CDN en 100+ regiones del mundo.</div>
+          <div class="cot-row-desc">Vercel (gratuito). SSL automático — tu sitio actual no tiene SSL, lo que afecta SEO y seguridad. CDN en 100+ regiones del mundo.</div>
         </div>
         <div class="cot-row-price accent">$0 / año</div>
       </div>
       <div class="cot-row">
         <div>
           <div class="cot-row-name">Migración de dominio + configuración DNS</div>
-          <div class="cot-row-desc">Apuntar francescafruci.art al nuevo sitio. Si ya administras tu dominio, el proceso toma menos de 24 horas. Incluido en la construcción.</div>
+          <div class="cot-row-desc">Apuntar francescafruci.art al nuevo sitio. Proceso de menos de 24 horas. Incluido en la construcción.</div>
         </div>
         <div class="cot-row-price accent">$0</div>
       </div>
       <div class="cot-row">
         <div>
           <div class="cot-row-name">Renovación de dominio (.art / .com)</div>
-          <div class="cot-row-desc">Si ya tienes francescafruci.art activo, sin costo adicional. Si necesitas renovar o registrar un nuevo dominio, el costo es del proveedor (~$15–25 USD/año). No incluido.</div>
+          <div class="cot-row-desc">Si ya tienes francescafruci.art activo, sin costo adicional. Si necesitas renovar, el costo es del proveedor (~$15–25/año). No incluido.</div>
         </div>
         <div class="cot-row-price muted">~$20 / año</div>
       </div>
       <div class="cot-row">
         <div>
           <div class="cot-row-name">Actualizaciones de contenido futuras</div>
-          <div class="cot-row-desc">Opcional. Agregar exposiciones, obras o texto. Se acuerda por tarea o paquete de horas.</div>
+          <div class="cot-row-desc">Agregar exposiciones, obras nuevas o cambios de texto. Se acuerda por tarea o paquete mensual.</div>
         </div>
         <div class="cot-row-price muted">A convenir</div>
       </div>
     </div>
 
-    <div class="cot-totals">
+    <div class="cot-totals" style="grid-template-columns:1fr 1fr 1fr;">
       <div class="cot-total-card">
         <div class="cot-total-lbl">Inversión total</div>
-        <div class="cot-total-num">$300 <span style="font-size:22px;">USD</span></div>
-        <div class="cot-total-note">Pago único. Sin mensualidades.<br>Costo anual posterior: solo el dominio (~$20/año).</div>
+        <div class="cot-total-num">$350 <span style="font-size:22px;">USD</span></div>
+        <div class="cot-total-note">Pago único. Sin mensualidades.<br>Costo anual posterior: solo el dominio.</div>
+      </div>
+      <div class="cot-total-card" style="border-color:rgba(155,187,196,.2);background:rgba(155,187,196,.05);">
+        <div class="cot-total-lbl">Plan de pagos</div>
+        <div class="cot-total-num" style="font-size:28px;margin-bottom:4px;">50% anticipo</div>
+        <div style="font-family:'Spectral',serif;font-style:italic;font-size:36px;color:#9bbbc4;margin-bottom:8px;">$175 USD</div>
+        <div class="cot-total-note">Al confirmar el proyecto.<br>+ $175 al entregar el sitio listo.</div>
       </div>
       <div class="cot-total-card dim">
-        <div class="cot-total-lbl">Costo WordPress actual (est.)</div>
+        <div class="cot-total-lbl">WordPress actual (est.)</div>
         <div class="cot-total-num">$120+ <span style="font-size:22px;">USD</span></div>
-        <div class="cot-total-note">Hosting/año sin SSL, carga lenta,<br>sin control total sobre el diseño.</div>
+        <div class="cot-total-note">Hosting/año sin SSL, lento,<br>sin tienda, sin control de diseño.</div>
+      </div>
+    </div>
+
+    <!-- Extras -->
+    <div style="border-top:1px solid rgba(255,255,255,.08);padding-top:48px;margin-bottom:52px;">
+      <div style="text-align:center;margin-bottom:40px;">
+        <div class="cot-label">Servicios adicionales</div>
+        <h3 class="cot-title" style="font-size:32px;">Extras opcionales</h3>
+        <p class="cot-sub" style="font-size:13px;">Se cotiza por separado del sitio base.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div class="cot-row" style="flex-direction:column;gap:8px;padding:20px 24px;">
+          <div style="font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:#9bbbc4;">Bot</div>
+          <div class="cot-row-name" style="margin-bottom:4px;">Bot de Instagram con IA</div>
+          <div class="cot-row-desc" style="margin-bottom:8px;">Responde DMs automáticamente sobre obras, precios y encargos. GPT-4o entrenado con tu catálogo. Dashboard para gestionar conversaciones.</div>
+          <div style="font-family:'Spectral',serif;font-style:italic;font-size:16px;color:#9bbbc4;">Consultar precio</div>
+        </div>
+        <div class="cot-row" style="flex-direction:column;gap:8px;padding:20px 24px;">
+          <div style="font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:#9bbbc4;">Email</div>
+          <div class="cot-row-name" style="margin-bottom:4px;">Email profesional</div>
+          <div class="cot-row-desc" style="margin-bottom:8px;">hola@francescafruci.art en lugar de Gmail. Cloudflare + envío transaccional para confirmaciones de órdenes y formulario de contacto.</div>
+          <div style="font-family:'Spectral',serif;font-style:italic;font-size:16px;color:#9bbbc4;">~$0–5 / mes</div>
+        </div>
+        <div class="cot-row" style="flex-direction:column;gap:8px;padding:20px 24px;">
+          <div style="font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:#9bbbc4;">Talleres</div>
+          <div class="cot-row-name" style="margin-bottom:4px;">Página de talleres con inscripción</div>
+          <div class="cot-row-desc" style="margin-bottom:8px;">Venta de talleres de joyería de vidrio con cupo limitado, fechas, precios e inscripción con pago online. Lista de asistentes incluida.</div>
+          <div style="font-family:'Spectral',serif;font-style:italic;font-size:16px;color:#9bbbc4;">Consultar precio</div>
+        </div>
+        <div class="cot-row" style="flex-direction:column;gap:8px;padding:20px 24px;">
+          <div style="font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:#9bbbc4;">Comisiones</div>
+          <div class="cot-row-name" style="margin-bottom:4px;">Sistema de encargos personalizados</div>
+          <div class="cot-row-desc" style="margin-bottom:8px;">Formulario de solicitud de obra + seguimiento por etapas (Solicitud → Cotización → En proceso → Entregada → Pagada). Sin depender de WhatsApp.</div>
+          <div style="font-family:'Spectral',serif;font-style:italic;font-size:16px;color:#9bbbc4;">Consultar precio</div>
+        </div>
+        <div class="cot-row" style="flex-direction:column;gap:8px;padding:20px 24px;">
+          <div style="font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:#9bbbc4;">Newsletter</div>
+          <div class="cot-row-name" style="margin-bottom:4px;">Lista de correos y newsletter</div>
+          <div class="cot-row-desc" style="margin-bottom:8px;">Formulario de suscripción en el sitio + Brevo o Mailchimp para anunciar exposiciones, obras y lanzamientos. Gratis hasta 2,000 suscriptores.</div>
+          <div style="font-family:'Spectral',serif;font-style:italic;font-size:16px;color:#9bbbc4;">~$0 / mes</div>
+        </div>
+        <div class="cot-row" style="flex-direction:column;gap:8px;padding:20px 24px;">
+          <div style="font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:#9bbbc4;">Analytics</div>
+          <div class="cot-row-name" style="margin-bottom:4px;">Análisis de tráfico y visitas</div>
+          <div class="cot-row-desc" style="margin-bottom:8px;">Google Analytics o Plausible para ver visitas, secciones más populares y origen del tráfico. Instalación incluida en el proyecto base.</div>
+          <div style="font-family:'Spectral',serif;font-style:italic;font-size:16px;color:#9bbbc4;">$0 incluido</div>
+        </div>
       </div>
     </div>
 
     <div class="cot-cta">
-      <p>¿Tienes preguntas o quieres ajustar algo? Hablemos.</p>
+      <p>¿Tienes preguntas o quieres agregar algún extra? Hablemos.</p>
       <a href="mailto:ayrton@ayrtoncela.cloud" class="cot-btn">Escribir a Ayrton →</a>
       <div class="cot-email">ayrton@ayrtoncela.cloud</div>
     </div>
   </div>
 </div>
-
 <!-- FOOTER -->
 <footer>
   <div class="footer-grid">
@@ -916,5 +1127,41 @@
   }, { rootMargin: '-35% 0px -60% 0px' });
   sections.forEach(s => obs.observe(s));
 </script>
+<script>
+  function abrirCo(nombre, medio, precio, img) {
+    document.getElementById('coNombre').textContent = nombre;
+    document.getElementById('coMedio').textContent = medio;
+    document.getElementById('coPrecio').textContent = precio;
+    document.getElementById('coImg').src = img;
+    document.getElementById('coDemo').style.display = 'none';
+    document.getElementById('coOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function cerrarCo() {
+    document.getElementById('coOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function mostrarCoDemo() {
+    document.getElementById('coDemo').style.display = 'block';
+  }
+  document.getElementById('coOverlay').addEventListener('click', function(e) {
+    if (e.target === this) cerrarCo();
+  });
+
+  /* Active nav on scroll */
+  const sections = document.querySelectorAll('section[id], div.cotizacion-wrap');
+  const links = document.querySelectorAll('.sidenav-links a');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const link = document.querySelector(`.sidenav-links a[href="#${e.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-35% 0px -60% 0px' });
+  sections.forEach(s => obs.observe(s));
+</script>
+
 </body>
 </html>
