@@ -18,243 +18,111 @@
   }
   html, body { height: 100%; }
   body {
-    background: #eee8dd;
-    color: var(--ink);
+    background: var(--paper); color: var(--ink);
     font-family: 'Inter', system-ui, sans-serif; font-weight: 300;
-    -webkit-font-smoothing: antialiased; line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
     min-height: 100vh; display: flex; flex-direction: column;
   }
   a { color: inherit; text-decoration: none; }
 
   /* ── HEADER ── */
   header {
-    padding: 28px 48px;
-    background: var(--paper);
+    padding: 28px 52px;
     border-bottom: 1px solid var(--rule);
     display: flex; align-items: baseline; justify-content: space-between;
-    position: sticky; top: 0; z-index: 10;
   }
   .header-brand {
-    font-family: 'Cormorant Garamond', serif; font-style: italic;
-    font-size: 20px; color: var(--ink);
+    font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 20px;
   }
-  .header-meta {
-    font-size: 10px; letter-spacing: .28em; text-transform: uppercase; color: var(--soft);
-  }
+  .header-meta { font-size: 10px; letter-spacing: .28em; text-transform: uppercase; color: var(--soft); }
 
   /* ── INTRO ── */
   .intro {
-    text-align: center; padding: 72px 48px 56px;
-    background: var(--paper); border-bottom: 2px solid var(--ink);
+    text-align: center; padding: 88px 52px 72px;
+    border-bottom: 1px solid var(--rule);
   }
   .intro-eyebrow {
-    font-size: 10px; letter-spacing: .35em; text-transform: uppercase;
-    color: var(--water); margin-bottom: 18px;
-    display: flex; align-items: center; justify-content: center; gap: 12px;
+    font-size: 10px; letter-spacing: .35em; text-transform: uppercase; color: var(--water);
+    margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 14px;
   }
-  .intro-eyebrow::before, .intro-eyebrow::after {
-    content: ''; width: 28px; height: 1px; background: var(--water);
-  }
+  .intro-eyebrow::before, .intro-eyebrow::after { content: ''; width: 28px; height: 1px; background: var(--water); }
   .intro h1 {
     font-family: 'Cormorant Garamond', serif; font-weight: 400;
-    font-size: clamp(32px, 4.5vw, 58px); line-height: 1.1; margin-bottom: 18px;
+    font-size: clamp(36px, 5vw, 64px); line-height: 1.1; margin-bottom: 20px;
   }
   .intro h1 em { font-style: italic; color: var(--water); }
   .intro p {
     font-family: 'Cormorant Garamond', serif; font-style: italic;
-    font-size: 18px; color: var(--soft); max-width: 480px; margin: 0 auto;
-    line-height: 1.65;
-  }
-  .intro-note {
-    margin-top: 24px; display: inline-flex; align-items: center; gap: 8px;
-    font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--water);
-  }
-  .intro-note::before { content: '↓'; font-size: 14px; }
-
-  /* ── CARDS WRAPPER ── */
-  .cards-section {
-    flex: 1;
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 0;
+    font-size: 18px; color: var(--soft); max-width: 440px; margin: 0 auto; line-height: 1.65;
   }
 
-  /* ── CARD ── */
+  /* ── CARDS ── */
+  .cards { flex: 1; display: grid; grid-template-columns: 1fr 1fr; }
+
   .card {
-    display: flex; flex-direction: column;
-    position: relative; overflow: hidden;
-    transition: transform .3s ease;
-    cursor: pointer;
-  }
-  .card-a {
-    background: #f5f0e8;
-    border-right: 2px solid var(--ink);
-  }
-  .card-b {
-    background: #fafaf8;
-  }
-  .card:hover { transform: translateY(-4px); }
-
-  /* Hover overlay */
-  .card::after {
-    content: '';
-    position: absolute; inset: 0;
-    border: 3px solid transparent;
-    transition: border-color .25s;
-    pointer-events: none; z-index: 5;
-  }
-  .card-a::after { border-color: transparent; }
-  .card-a:hover::after { border-color: var(--water); }
-  .card-b::after { border-color: transparent; }
-  .card-b:hover::after { border-color: #2c4a52; }
-
-  /* ── CARD LABEL ── */
-  .card-label-bar {
-    padding: 14px 36px;
-    display: flex; align-items: center; justify-content: space-between;
-    border-bottom: 1px solid rgba(26,24,20,.1);
-  }
-  .card-a .card-label-bar { background: #ede5d7; }
-  .card-b .card-label-bar { background: #f0efeb; border-bottom: 1px solid #e4e3de; }
-  .card-badge {
-    font-size: 9px; letter-spacing: .3em; text-transform: uppercase;
-    padding: 5px 12px; border: 1px solid currentColor;
-  }
-  .card-a .card-badge { color: var(--water); }
-  .card-b .card-badge { color: #2c4a52; }
-  .card-label-style {
-    font-family: 'Cormorant Garamond', serif; font-style: italic;
-    font-size: 14px; color: var(--soft);
-  }
-
-  /* ── PREVIEW — CSS mockups ── */
-  .preview {
-    border-bottom: 1px solid rgba(26,24,20,.1);
-    flex-shrink: 0;
-  }
-  .card-b .preview { border-bottom: 1px solid #e4e3de; }
-
-  /* Preview A — Italian Editorial */
-  .preview-a {
-    background: #f5f0e8; padding: 0;
-  }
-  .pa-utility {
-    padding: 9px 20px; font-size: 7px; letter-spacing: .16em;
-    text-transform: uppercase; color: #57514a;
-    display: flex; justify-content: space-between;
-    border-bottom: 1px solid rgba(26,24,20,.08);
-  }
-  .pa-masthead-title {
-    text-align: center; padding: 14px 20px 5px;
-  }
-  .pa-brand-name {
-    font-family: 'Cormorant Garamond', serif; font-style: italic;
-    font-size: 30px; color: #1a1814; line-height: 1; display: block;
-  }
-  .pa-brand-sub {
-    font-size: 7px; letter-spacing: .3em; text-transform: uppercase;
-    color: #3a5a64; display: block; margin-top: 4px;
-  }
-  .pa-nav-row {
-    margin: 8px 20px 0; padding: 7px 0 10px;
-    border-top: 1px solid rgba(26,24,20,.08);
-    display: flex; justify-content: center; gap: 0;
-  }
-  .pa-nav-row span {
-    font-family: 'Cormorant Garamond', serif; font-size: 10px;
-    color: #1a1814; padding: 0 9px; position: relative;
-  }
-  .pa-nav-row span:not(:last-child)::after {
-    content: '·'; position: absolute; right: -1px; color: #c0d0d4;
-  }
-  .pa-hero {
-    display: grid; grid-template-columns: 5fr 7fr; gap: 14px;
-    padding: 18px 20px 22px;
-  }
-  .pa-img { background: #ddd5c4; aspect-ratio: 4/5; border: 1px solid rgba(26,24,20,.08); }
-  .pa-txt { display: flex; flex-direction: column; justify-content: center; padding-top: 6px; }
-  .pa-line { width: 24px; height: 1px; background: #3a5a64; margin-bottom: 6px; }
-  .pa-h { font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: .95; color: #1a1814; }
-  .pa-h em { font-style: italic; color: #3a5a64; }
-  .pa-p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 9px; color: #57514a; line-height: 1.5; margin-top: 8px; }
-
-  /* Preview B — Zen Gallery Sidebar */
-  .preview-b {
-    background: #fafaf8; display: flex;
-  }
-  .pb-sidebar {
-    width: 60px; border-right: 1px solid #e4e3de;
-    padding: 16px 10px;
     display: flex; flex-direction: column; justify-content: space-between;
-    flex-shrink: 0;
+    padding: 64px 56px 56px;
+    cursor: pointer; position: relative;
+    transition: background .25s;
   }
-  .pb-brand-txt {
-    font-size: 9px; color: #161614; line-height: 1.3; margin-bottom: 18px;
-  }
-  .pb-links { display: flex; flex-direction: column; gap: 9px; }
-  .pb-links span { font-size: 7px; color: #6b6b68; }
-  .pb-links span.on { font-style: italic; color: #161614; }
-  .pb-social-txt { font-size: 7px; color: #9b9b98; }
-  .pb-main { flex: 1; padding: 18px 16px; display: flex; flex-direction: column; }
-  .pb-eye { font-size: 7px; letter-spacing: .28em; text-transform: uppercase; color: #6b6b68; margin-bottom: 12px; }
-  .pb-heading {
-    font-family: 'Cormorant Garamond', serif; font-weight: 300;
-    font-size: 30px; line-height: 1; color: #161614; margin-bottom: 7px;
-  }
-  .pb-heading em { font-style: italic; }
-  .pb-sub { font-size: 8px; font-style: italic; color: #6b6b68; line-height: 1.5; margin-bottom: 14px; }
-  .pb-img { flex: 1; min-height: 100px; background: #e8e8e5; border: 1px solid #e4e3de; }
+  .card-a { border-right: 1px solid var(--rule); }
+  .card-b { background: #fafaf8; }
+  .card-a:hover { background: #ede5d7; }
+  .card-b:hover { background: #f0eeea; }
 
-  /* ── CARD BODY ── */
-  .card-body { padding: 32px 36px 36px; flex: 1; display: flex; flex-direction: column; }
-  .card-title {
+  .card-number {
+    font-size: 10px; letter-spacing: .35em; text-transform: uppercase; color: var(--water);
+    margin-bottom: 48px;
+  }
+  .card-style {
     font-family: 'Cormorant Garamond', serif; font-weight: 400;
-    font-size: 26px; line-height: 1.1; margin-bottom: 10px;
+    font-size: clamp(40px, 4.5vw, 64px); line-height: 1.05; letter-spacing: -.015em;
+    margin-bottom: 8px;
   }
-  .card-a .card-title em { font-style: italic; color: var(--water); }
-  .card-b .card-title em { font-style: italic; color: #2c4a52; }
+  .card-style em { font-style: italic; color: var(--water); }
+  .card-b .card-style em { color: #2c4a52; }
+  .card-subtitle {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 20px; color: var(--soft); margin-bottom: 40px;
+  }
   .card-desc {
-    font-size: 13px; color: var(--soft); line-height: 1.75;
-    margin-bottom: 22px; max-width: 360px;
+    font-size: 13px; color: var(--soft); line-height: 1.8;
+    max-width: 360px; margin-bottom: 48px;
   }
-  .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 28px; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 56px; }
   .tag {
-    font-size: 9px; letter-spacing: .16em; text-transform: uppercase;
-    padding: 4px 10px; color: var(--soft);
+    font-size: 9px; letter-spacing: .18em; text-transform: uppercase;
+    padding: 5px 12px; color: var(--soft); background: rgba(26,24,20,.06);
   }
-  .card-a .tag { background: rgba(58,90,100,.08); }
-  .card-b .tag { background: #ededea; }
+  .card-b .tag { background: rgba(26,24,20,.05); }
+
   .card-cta {
-    margin-top: auto;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 14px 20px;
-    border: 1px solid var(--ink);
-    font-size: 10px; letter-spacing: .25em; text-transform: uppercase;
-    color: var(--ink); transition: background .2s, color .2s;
+    padding: 16px 22px; border: 1px solid var(--ink);
+    font-size: 10px; letter-spacing: .25em; text-transform: uppercase; color: var(--ink);
+    transition: background .2s, color .2s; max-width: 320px;
   }
-  .card:hover .card-cta {
-    background: var(--ink); color: var(--paper);
-  }
-  .card-cta-arrow { font-size: 16px; transition: transform .2s; }
-  .card:hover .card-cta-arrow { transform: translateX(4px); }
+  .card:hover .card-cta { background: var(--ink); color: var(--paper); }
+  .cta-arrow { font-size: 18px; transition: transform .2s; }
+  .card:hover .cta-arrow { transform: translateX(5px); }
 
   /* ── FOOTER ── */
   footer {
-    padding: 20px 48px;
-    background: var(--ink); color: rgba(245,240,232,.45);
-    display: flex; align-items: center; justify-content: space-between;
-    font-size: 10px; letter-spacing: .1em;
+    padding: 22px 52px; border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 10px; color: var(--soft); letter-spacing: .06em;
   }
-  footer a { color: rgba(245,240,232,.7); transition: color .2s; }
-  footer a:hover { color: var(--paper); }
+  footer a { transition: color .2s; }
+  footer a:hover { color: var(--ink); }
 
   /* ── RESPONSIVE ── */
-  @media (max-width: 860px) {
-    header { padding: 18px 20px; }
-    .intro { padding: 48px 20px 40px; }
-    .cards-section { grid-template-columns: 1fr; }
-    .card-a { border-right: none; border-bottom: 2px solid var(--ink); }
-    .card:hover { transform: none; }
-    footer { padding: 16px 20px; flex-direction: column; gap: 6px; text-align: center; }
+  @media (max-width: 800px) {
+    header, footer { padding: 18px 24px; }
+    .intro { padding: 56px 24px 48px; }
+    .cards { grid-template-columns: 1fr; }
+    .card { padding: 48px 24px 44px; border-right: none; border-bottom: 1px solid var(--rule); }
+    .card-cta { max-width: 100%; }
+    footer { flex-direction: column; gap: 6px; text-align: center; }
   }
 </style>
 </head>
@@ -268,44 +136,20 @@
 <div class="intro">
   <div class="intro-eyebrow">Preparado por Ayrton Cela</div>
   <h1>Dos propuestas para tu<br><em>nuevo sitio web</em></h1>
-  <p>Explora cada opción, revisa el sitio completo y encuentra la cotización al final de cada una.</p>
-  <div class="intro-note">Haz clic en la propuesta para abrirla</div>
+  <p>Explora cada opción y encuentra la cotización al final de cada propuesta.</p>
 </div>
 
-<div class="cards-section">
+<div class="cards">
 
-  <!-- CARD A -->
   <a class="card card-a" href="propuesta-a.html">
-    <div class="card-label-bar">
-      <span class="card-badge">Propuesta A</span>
-      <span class="card-label-style">Italian Editorial</span>
-    </div>
-    <div class="preview preview-a">
-      <div class="pa-utility">
-        <span>Quito · Madrid</span><span>@ffruci_art</span><span>ES · EN</span>
-      </div>
-      <div class="pa-masthead-title">
-        <span class="pa-brand-name">Francesca Fruci</span>
-        <span class="pa-brand-sub">Visual artist · est. 1999</span>
-      </div>
-      <div class="pa-nav-row">
-        <span>Bio</span><span>Artworks</span><span>Exhibitions</span><span>Tienda</span><span>Contact</span>
-      </div>
-      <div class="pa-hero">
-        <div class="pa-img"></div>
-        <div class="pa-txt">
-          <div class="pa-line"></div>
-          <div class="pa-h">Francesca<br><em>Fruci</em></div>
-          <div class="pa-p">Poesía visual a través de instalaciones,<br>fotografía y escultura en vidrio.</div>
-        </div>
-      </div>
-    </div>
-    <div class="card-body">
-      <h2 class="card-title"><em>Italian</em> Editorial</h2>
+    <div>
+      <div class="card-number">Propuesta A</div>
+      <h2 class="card-style"><em>Italian</em> Editorial</h2>
+      <div class="card-subtitle">Masthead de revista italiana</div>
       <p class="card-desc">
-        Masthead de revista italiana en 3 filas, nombre en Cormorant Garamond italic,
-        paleta papel–tinta–agua. Grid asimétrico tipo Domus o Vogue Italia.
-        Con tienda integrada y sección de extras.
+        Header en tres filas: información de ciudad, nombre grande en Cormorant Garamond
+        italic y navegación separada por puntos. Paleta cálida en papel, tinta y agua.
+        Grid asimétrico estilo Domus o Vogue Italia. Con tienda integrada.
       </p>
       <div class="card-tags">
         <span class="tag">Cormorant Garamond</span>
@@ -313,46 +157,22 @@
         <span class="tag">Grid asimétrico</span>
         <span class="tag">Tienda online</span>
       </div>
-      <div class="card-cta">
-        <span>Abrir Propuesta A</span>
-        <span class="card-cta-arrow">→</span>
-      </div>
+    </div>
+    <div class="card-cta">
+      <span>Abrir Propuesta A</span>
+      <span class="cta-arrow">→</span>
     </div>
   </a>
 
-  <!-- CARD B -->
   <a class="card card-b" href="propuesta-b.html">
-    <div class="card-label-bar">
-      <span class="card-badge">Propuesta B</span>
-      <span class="card-label-style">Zen Gallery</span>
-    </div>
-    <div class="preview preview-b">
-      <div class="pb-sidebar">
-        <div>
-          <div class="pb-brand-txt">Francesca<br>Fruci</div>
-          <div class="pb-links">
-            <span>Bio</span>
-            <span class="on">Artworks</span>
-            <span>Exhibitions</span>
-            <span>Tienda</span>
-            <span>Contact</span>
-          </div>
-        </div>
-        <div class="pb-social-txt">@ffruci_art</div>
-      </div>
-      <div class="pb-main">
-        <div class="pb-eye">Visual Artist · Quito · Madrid</div>
-        <div class="pb-heading">Francesca<br><em>Fruci</em></div>
-        <div class="pb-sub">Poesía visual a través de instalaciones,<br>fotografía y escultura en vidrio.</div>
-        <div class="pb-img"></div>
-      </div>
-    </div>
-    <div class="card-body">
-      <h2 class="card-title">Zen <em>Gallery</em></h2>
+    <div>
+      <div class="card-number">Propuesta B</div>
+      <h2 class="card-style">Zen <em>Gallery</em></h2>
+      <div class="card-subtitle">Sidebar vertical fijo</div>
       <p class="card-desc">
-        Navegación lateral fija estilo galería contemporánea. Contenido en columna
-        central amplia. Paleta monocroma neutra. Referencia: Gagosian, Pace Gallery.
-        Con tienda integrada y sección de extras.
+        Navegación lateral fija al estilo de galerías contemporáneas. El contenido
+        respira en una columna central amplia. Paleta monocroma neutra, tipografía
+        Spectral. Referencia: Gagosian, Pace Gallery. Con tienda integrada.
       </p>
       <div class="card-tags">
         <span class="tag">Spectral + Manrope</span>
@@ -360,10 +180,10 @@
         <span class="tag">Monocromático</span>
         <span class="tag">Tienda online</span>
       </div>
-      <div class="card-cta">
-        <span>Abrir Propuesta B</span>
-        <span class="card-cta-arrow">→</span>
-      </div>
+    </div>
+    <div class="card-cta">
+      <span>Abrir Propuesta B</span>
+      <span class="cta-arrow">→</span>
     </div>
   </a>
 
